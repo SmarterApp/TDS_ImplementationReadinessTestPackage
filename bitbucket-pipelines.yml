@@ -1,0 +1,11 @@
+pipelines:
+  default:
+    - step:
+        script:
+          - apt-get update
+          - apt-get install -y python-pip
+          - apt-get install
+          - pip install awscli
+          - aws s3 sync irp-package s3://irp-resources/irp-package
+          - aws elasticbeanstalk restart-app-server --environment-name "${ADAPTER_ENV_NAME}"
+          - aws elasticbeanstalk restart-app-server --environment-name "${IRP_ENV_NAME}"
