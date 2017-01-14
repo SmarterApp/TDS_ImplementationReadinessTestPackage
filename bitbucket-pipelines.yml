@@ -7,5 +7,5 @@ pipelines:
           - apt-get install
           - pip install awscli
           - aws s3 sync irp-package s3://irp-resources/irp-package
-          - aws elasticbeanstalk rebuild-environment --environment-name "$ADAPTER_ENV_NAME"
-          - aws elasticbeanstalk rebuild-environment --environment-name "$IRP_ENV_NAME"
+          - aws elasticbeanstalk update-environment --environment-name "$ADAPTER_ENV_NAME"
+          - aws elasticbeanstalk update-environment --environment-name "$IRP_ENV_NAME"
